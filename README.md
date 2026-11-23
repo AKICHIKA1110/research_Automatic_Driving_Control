@@ -1,5 +1,7 @@
 # MentorPi Research: 白線マスク時系列画像による走行速度推定と小型移動ロボット
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24466081.svg)](https://doi.org/10.5281/zenodo.24466081)
+
 小型移動ロボット（Hiwonder MentorPi A1 相当、アッカーマン操舵）を対象にした個人研究のコードです。
 
 著者：栗原 旺愛（Akichika Kurihara, Independent Researcher）
@@ -39,7 +41,9 @@
 
 ## 引用
 
-[CITATION.cff](CITATION.cff) を参照してください（GitHub の「Cite this repository」から BibTeX を取得できます）。
+Kurihara, A. (2026). *MentorPi Research: speed estimation from time-series lane-mask images (3D-CNN vs 2D-CNN) and lane-synth* (v1.0.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.24466081
+
+[CITATION.cff](CITATION.cff) も参照してください（GitHub の「Cite this repository」から BibTeX を取得できます）。
 
 ## ライセンス
 
