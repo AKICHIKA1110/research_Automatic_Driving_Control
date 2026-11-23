@@ -1,0 +1,18 @@
+# クロソイド付きオーバル：直線 3.0 m、半径 0.9 m、緩和曲線 0.6 m（曲率が連続に変化）
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: stadium_clothoid
+closed: true
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [0.0, 0.0]
+start_heading_deg: 0.0
+segments:
+- {type: straight, length: 3.0}
+- {type: clothoid, length: 0.6, k0: 0.0, k1: 1.111111}
+- {type: arc, radius: 0.9, angle_deg: 141.802814}
+- {type: clothoid, length: 0.6, k0: 1.111111, k1: 0.0}
+- {type: straight, length: 3.0}
+- {type: clothoid, length: 0.6, k0: 0.0, k1: 1.111111}
+- {type: arc, radius: 0.9, angle_deg: 141.802814}
+- {type: clothoid, length: 0.6, k0: 1.111111, k1: 0.0}

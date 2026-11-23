@@ -1,0 +1,13 @@
+# S 字を含む開いた道路（曲率の符号が切り替わる場面の確認用）
+closed: false
+center_line: none
+lane_width: 0.40
+line_width: 0.02
+segments:
+  - {type: straight, length: 1.0}
+  - {type: clothoid, length: 0.3, k0: 0.0, k1: 1.25}   # 曲率 0 → 1/0.8 に滑らかに変化
+  - {type: arc, radius: 0.8, angle_deg: 70}
+  - {type: clothoid, length: 0.6, k0: 1.25, k1: -1.25}
+  - {type: arc, radius: 0.8, angle_deg: -70}             # 負 = 右カーブ
+  - {type: clothoid, length: 0.3, k0: -1.25, k1: 0.0}
+  - {type: straight, length: 2.0}

@@ -1,0 +1,56 @@
+# HP60C RGB intrinsics: 16 images, board 10x7 inner corners, square 0.02375 m, RMS reprojection error 0.473 px
+image_width: 640
+image_height: 480
+camera_name: hp60c_rgb
+camera_matrix:
+  rows: 3
+  cols: 3
+  data:
+  - 585.9923504678026
+  - 0.0
+  - 348.56239170059104
+  - 0.0
+  - 588.779068887528
+  - 210.83540779362482
+  - 0.0
+  - 0.0
+  - 1.0
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data:
+  - -0.006475566116498336
+  - 0.06856751276879382
+  - -0.007958746503401285
+  - 0.012668492635428956
+  - 0.0
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+projection_matrix:
+  rows: 3
+  cols: 4
+  data:
+  - 585.9923504678026
+  - 0.0
+  - 348.56239170059104
+  - 0.0
+  - 0.0
+  - 588.779068887528
+  - 210.83540779362482
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+  - 0.0

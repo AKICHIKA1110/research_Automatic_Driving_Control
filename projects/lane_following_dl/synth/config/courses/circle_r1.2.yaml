@@ -1,0 +1,12 @@
+# 半径 1.2 m の円（曲率一定 κ = 0.83 を連続して見る）
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: circle_r1.2
+closed: true
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [0.0, 0.0]
+start_heading_deg: 0.0
+segments:
+- {type: arc, radius: 1.2, angle_deg: 180}
+- {type: arc, radius: 1.2, angle_deg: 180}

@@ -1,0 +1,26 @@
+# 豆形 8 m × 4.5 m：長辺がくびれて、ゆるい右カーブが入る（半径 0.9〜1.4 m）
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: bean
+closed: true
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [-0.315209, 0.69346]
+start_heading_deg: -65.556045
+segments:
+- {type: arc, radius: 0.9, angle_deg: 80.487462}
+- {type: straight, length: 1.969764}
+- {type: arc, radius: 1.4, angle_deg: -29.862834}
+- {type: straight, length: 1.969764}
+- {type: arc, radius: 0.9, angle_deg: 80.487462}
+- {type: straight, length: 1.210244}
+- {type: arc, radius: 1.0, angle_deg: 47.94252}
+- {type: straight, length: 1.288788}
+- {type: arc, radius: 0.9, angle_deg: 81.432852}
+- {type: straight, length: 1.95693}
+- {type: arc, radius: 1.4, angle_deg: -29.862834}
+- {type: straight, length: 1.95693}
+- {type: arc, radius: 0.9, angle_deg: 81.432852}
+- {type: straight, length: 1.288788}
+- {type: arc, radius: 1.0, angle_deg: 47.94252}
+- {type: straight, length: 1.210244}

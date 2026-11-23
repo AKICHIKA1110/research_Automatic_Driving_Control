@@ -1,0 +1,122 @@
+# 合成データ生成の設定（単位は m・rad・deg を明記）
+#
+# 座標系
+#   world     : コースを置く床面。z 上向き
+#   base_link : x 前方・y 左・z 上。原点は後輪車軸中心の床面上
+#   camera    : カメラ本体（x 前方・y 左・z 上）を base_link から xyz / rpy で配置。
+#               rpy は ROS と同じ（pitch 正 = 下向き）。光学座標系への変換は内部で行う
+
+camera:
+  # !!! 仮の値。HP60C の RGB をキャリブレーションしたら置き換える !!!
+  width: 640
+  height: 480
+  fx: 460.0
+  fy: 460.0
+  cx: 320.0
+  cy: 240.0
+  dist: [0.0, 0.0, 0.0, 0.0, 0.0]   # k1, k2, p1, p2, k3（OpenCV 形式）
+  # base_link から見たカメラの取り付け位置・姿勢（仮の値。実測で置き換える）
+  xyz: [0.20, 0.0, 0.13]
+  rpy_deg: [0.0, 20.0, 0.0]
+
+render:
+  supersample: 2          # カメラ画像を何倍の解像度で描いてから縮小するか
+  world_res: 0.002        # コースを描くラスタの解像度 [m/px]
+  max_range: 4.0          # これより遠い床は描かない [m]
+
+bev:
+  # 鳥瞰画像の範囲（base_link 座標）。上端 = x_max（遠方）、左端 = y_max（左）
+  x_min: 0.30
+  x_max: 1.00
+  y_min: -0.45
+  y_max: 0.45
+  res: 0.005              # [m/px] → 140 x 180 px
+
+labels:
+  # 中心線の点を取る前方距離（base_link の x）[m]
+  stations_x: [0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95]
+  # 曲率の正解ラベル κ(s) を記録する経路長（車両の真横の点からの s）[m]
+  preview_s: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+  # 中心線の点を取る経路長（車両の真横の点からの s）[m]。急カーブでも必ず存在する
+  path_s: [0.35, 0.45, 0.55, 0.65, 0.75, 0.85, 0.95]
+
+track:
+  center_line: none               # none: 白線 2 本だけ / dashed: 中央破線あり（将来用）
+  lane_width: [0.35, 0.40]        # 車線の幅 [m]（center_line: none なら 2 本の白線の間隔）
+  line_width: [0.015, 0.025]      # 白線（テープ）の幅 [m]
+  dash_length: [0.08, 0.15]       # 中央破線の線の長さ [m]
+  dash_gap_ratio: [0.8, 1.2]      # 破線の 間隔 / 線の長さ
+  single_lane_prob: 0.15          # center_line: dashed のとき、破線なしにするコースの割合
+  closed_course_prob: 0.7         # 周回コース（残りは開いた道路）
+  # 周回コース：多角形の角を円弧で丸めて作る
+  closed:
+    box_x: [2.2, 4.5]             # 道路中心線の外形の目安 [m]
+    box_y: [1.6, 3.2]
+    shape_probs:                  # 形状の種類と割合
+      rounded_rect: 0.35          # 角丸長方形・オーバル（実コースに近い）
+      notched: 0.25               # 切り欠きあり（S字ができる）
+      l_shape: 0.15               # L 字
+      polygon: 0.25               # ランダムな多角形
+    n_vertices: [4, 7]
+    radius: [0.6, 1.6]            # 道路中心線の円弧半径 [m]
+    min_straight: 0.05
+  # 開いた道路：直線・円弧・クロソイドをつなぐ
+  open:
+    length: [4.0, 7.0]
+    seg_length: [0.3, 1.5]
+    min_radius: 0.6               # 道路中心線の最小半径 [m]
+  clearance: 0.10                 # コースの別の部分との最小すき間 [m]
+  floor_seams_prob: 0.5           # フローリングの継ぎ目（誤検出のもと）を描く割合
+  floor_seam_spacing: [0.10, 0.30]
+  floor_seam_strength: [0.05, 0.35]
+
+driving:
+  # mode: exact        → 設定した軌跡どおりに走る（中心線から一定の横ずれ・方位ずれ、一定速度）
+  # mode: pure_pursuit → バイシクルモデル＋ Pure Pursuit（操舵遅れ・ノイズあり。将来用）
+  mode: exact
+  speed: 0.5                      # exact: 速度 [m/s]
+  offset_y: 0.0                   # exact: 中心線からの横ずれ [m]（左が正）
+  heading_offset_deg: 0.0         # exact: 中心線に対する向きのずれ [deg]（左向きが正）
+  start_s: 0.0                    # exact: スタート位置（中心線上の経路長）[m]
+  distance: null                  # exact: 走る距離 [m]。null = 周回コースなら 1 周
+  speed_range: [0.3, 1.0]         # データセット生成時（exact）の速度の範囲
+  wheelbase: 0.145
+  max_steer_deg: 29.0
+  steer_tau: 0.10                 # 操舵の一次遅れ [s]
+  pp_speed: [0.3, 1.0]            # pure_pursuit: [m/s]
+  fps: 15                         # カメラのフレームレート
+  keep_prob: 0.5                  # フレームを残す確率（連続フレームの相関を下げる）
+  frames_per_seq: [40, 120]
+  lookahead: [0.25, 0.45]         # Pure Pursuit の先読み距離 [m]
+  offset_sigma: 0.05              # 目標の横ずれ（ゆっくり変化）[m]
+  steer_noise_deg: 4.0            # 操舵ノイズ（OU 過程）
+  init_ey: 0.10                   # 初期横ずれの範囲 ±[m]
+  init_epsi_deg: 20.0             # 初期方位誤差の範囲 ±[deg]
+
+perturb:
+  enable: false                   # true で下記の誤差・揺れを加える（将来用）
+  # 外部パラメータ（キャリブレーション誤差）：系列ごと
+  calib_rpy_deg: [1.0, 1.5, 1.0]  # ±roll, ±pitch, ±yaw
+  calib_xyz: [0.005, 0.005, 0.005]
+  intrinsic_rel: 0.01             # fx, fy の相対誤差 ±
+  # 車体の揺れ：フレームごと
+  body_pitch_deg: 0.5             # 標準偏差
+  body_roll_deg: 0.5
+  pitch_per_accel_deg: 0.3        # 加速度 1 m/s^2 あたりのピッチ [deg]
+  roll_per_latacc_deg: 0.3
+
+detection_noise:
+  enable: false                   # true で下記の劣化を加える（ノイズ設計後に使う）。床の継ぎ目もこれに連動
+  # 「白線検出 CNN の出力（確率マップ）」らしさを出すための劣化
+  morph_prob: 0.5                 # 線の太り・痩せ
+  blur_sigma: [0.0, 1.5]          # [px]
+  range_fade: [2.0, 4.0]          # この距離範囲で検出確率を下げる [m]
+  dropout_blobs: [0, 4]           # 欠け（影・遮蔽）の個数
+  dropout_size: [10, 60]          # [px]
+  specular_blobs: [0, 3]          # 床の反射による誤検出の個数
+  specular_strength: [0.3, 1.0]
+  specular_size: [15, 80]         # [px]
+  speckle_count: [0, 30]          # 小さな点状の誤検出
+  gain: [0.7, 1.0]                # 確率の最大値のばらつき
+  gauss_noise: 0.03
+  binarize_prob: 0.3              # しきい値処理した二値マスクとして出力する割合

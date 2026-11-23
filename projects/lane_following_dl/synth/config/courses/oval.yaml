@@ -1,0 +1,14 @@
+# 実コース想定のオーバル（白線 2 本、中央線なし）
+# 道路中心線：直線 1.8 m ＋ 半径 0.7 m の半円 × 2
+# 外側の白線の外形 ≒ 3.6 m × 1.8 m（車線幅 0.40 m のとき）
+closed: true
+center_line: none
+lane_width: 0.40        # 2 本の白線の間隔 [m]
+line_width: 0.02        # 白線の幅 [m]
+start_xy: [0.0, 0.0]
+start_heading_deg: 0.0
+segments:
+  - {type: straight, length: 1.8}
+  - {type: arc, radius: 0.7, angle_deg: 180}    # 正 = 左カーブ
+  - {type: straight, length: 1.8}
+  - {type: arc, radius: 0.7, angle_deg: 180}

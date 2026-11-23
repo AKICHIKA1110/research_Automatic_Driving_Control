@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "MentorPi Research: speed estimation from time-series lane-mask images (3D-CNN vs 2D-CNN) and lane-synth"
+type: software
+authors:
+  - family-names: "Kurihara"
+    given-names: "Akichika"
+    alias: "栗原 旺愛"
+    affiliation: "Independent Researcher, Japan"
+    email: "cm24017@g.kogakuin.jp"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+license: Apache-2.0
+version: "1.0.0"
+date-released: "2026-11-23"
+keywords:
+  - 3D-CNN
+  - speed estimation
+  - lane detection
+  - synthetic data
+  - mobile robot
+  - ROS 2

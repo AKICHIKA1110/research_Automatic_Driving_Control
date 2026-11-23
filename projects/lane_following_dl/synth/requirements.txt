@@ -1,0 +1,7 @@
+numpy
+scipy
+opencv-python-headless
+pyyaml
+matplotlib
+PySide6
+pytest

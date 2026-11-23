@@ -1,0 +1,10 @@
+data/
+runs/
+*.pt
+*.onnx
+*.har
+*.hef
+# reports and results stay local (not committed)
+results/
+slides/
+*.pptx

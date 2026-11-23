@@ -1,0 +1,28 @@
+# 大型サーキット 13 m × 10 m：長い直線・高速コーナー・切り返し（半径 1.0〜2.0 m）
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: grand_circuit
+closed: true
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [0.0, 2.0]
+start_heading_deg: -90.0
+segments:
+- {type: arc, radius: 2.0, angle_deg: 90.0}
+- {type: straight, length: 8.5}
+- {type: arc, radius: 1.5, angle_deg: 90.0}
+- {type: straight, length: 0.758359}
+- {type: arc, radius: 1.2, angle_deg: 63.434949}
+- {type: straight, length: 1.083446}
+- {type: arc, radius: 1.0, angle_deg: -113.629378}
+- {type: straight, length: 1.814059}
+- {type: arc, radius: 1.2, angle_deg: 50.194429}
+- {type: straight, length: 0.83795}
+- {type: arc, radius: 1.6, angle_deg: 90.0}
+- {type: straight, length: 3.819677}
+- {type: arc, radius: 1.0, angle_deg: 60.255119}
+- {type: straight, length: 2.50482}
+- {type: arc, radius: 1.0, angle_deg: -86.82017}
+- {type: straight, length: 0.290082}
+- {type: arc, radius: 2.0, angle_deg: 116.565051}
+- {type: straight, length: 3.263932}

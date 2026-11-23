@@ -1,0 +1,26 @@
+# 切り欠き付き長方形 6 m × 4 m：上辺の凹みで右カーブと S 字（半径 0.45〜1.0 m）
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: notched_rect
+closed: true
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [0.0, 1.0]
+start_heading_deg: -90.0
+segments:
+- {type: arc, radius: 1.0, angle_deg: 90.0}
+- {type: straight, length: 4.0}
+- {type: arc, radius: 1.0, angle_deg: 90.0}
+- {type: straight, length: 2.2}
+- {type: arc, radius: 0.8, angle_deg: 90.0}
+- {type: straight, length: 1.15}
+- {type: arc, radius: 0.55, angle_deg: 90.0}
+- {type: straight, length: 0.8}
+- {type: arc, radius: 0.45, angle_deg: -90.0}
+- {type: straight, length: 0.1}
+- {type: arc, radius: 0.45, angle_deg: -90.0}
+- {type: straight, length: 0.8}
+- {type: arc, radius: 0.55, angle_deg: 90.0}
+- {type: straight, length: 0.95}
+- {type: arc, radius: 1.0, angle_deg: 90.0}
+- {type: straight, length: 2.0}

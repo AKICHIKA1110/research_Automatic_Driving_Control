@@ -1,0 +1,14 @@
+# ヘアピン：直線 5.0 m + 半径 0.55 m の 180° ターン × 2（急カーブ）
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: hairpin_paperclip
+closed: true
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [0.0, 0.0]
+start_heading_deg: 0.0
+segments:
+- {type: straight, length: 5.0}
+- {type: arc, radius: 0.55, angle_deg: 180}
+- {type: straight, length: 5.0}
+- {type: arc, radius: 0.55, angle_deg: 180}

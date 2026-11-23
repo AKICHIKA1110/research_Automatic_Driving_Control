@@ -1,0 +1,26 @@
+# クロソイド付き角丸長方形：5.0 m × 3.0 m の直線、角は半径 0.8 m・緩和曲線 0.4 m
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: rect_clothoid
+closed: true
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [0.0, 0.0]
+start_heading_deg: 0.0
+segments:
+- {type: straight, length: 5.0}
+- {type: clothoid, length: 0.4, k0: 0.0, k1: 1.25}
+- {type: arc, radius: 0.8, angle_deg: 61.35211}
+- {type: clothoid, length: 0.4, k0: 1.25, k1: 0.0}
+- {type: straight, length: 3.0}
+- {type: clothoid, length: 0.4, k0: 0.0, k1: 1.25}
+- {type: arc, radius: 0.8, angle_deg: 61.35211}
+- {type: clothoid, length: 0.4, k0: 1.25, k1: 0.0}
+- {type: straight, length: 5.0}
+- {type: clothoid, length: 0.4, k0: 0.0, k1: 1.25}
+- {type: arc, radius: 0.8, angle_deg: 61.35211}
+- {type: clothoid, length: 0.4, k0: 1.25, k1: 0.0}
+- {type: straight, length: 3.0}
+- {type: clothoid, length: 0.4, k0: 0.0, k1: 1.25}
+- {type: arc, radius: 0.8, angle_deg: 61.35211}
+- {type: clothoid, length: 0.4, k0: 1.25, k1: 0.0}

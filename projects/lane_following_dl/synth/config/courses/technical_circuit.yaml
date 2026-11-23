@@ -1,0 +1,26 @@
+# テクニカルサーキット 9 m × 5 m：大小のカーブ・角度の違うコーナー・右カーブ（半径 0.6〜2.0 m）
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: technical_circuit
+closed: true
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [0.233931, 1.403589]
+start_heading_deg: -99.462322
+segments:
+- {type: arc, radius: 1.4, angle_deg: 90.931557}
+- {type: straight, length: 2.187993}
+- {type: arc, radius: 2.0, angle_deg: 24.476162}
+- {type: straight, length: 2.70748}
+- {type: arc, radius: 1.0, angle_deg: 53.017093}
+- {type: straight, length: 1.68223}
+- {type: arc, radius: 0.8, angle_deg: 74.167613}
+- {type: straight, length: 1.411317}
+- {type: arc, radius: 0.6, angle_deg: 77.784281}
+- {type: straight, length: 1.008188}
+- {type: arc, radius: 0.6, angle_deg: -78.789367}
+- {type: straight, length: 1.222833}
+- {type: arc, radius: 1.0, angle_deg: 58.912495}
+- {type: straight, length: 1.592209}
+- {type: arc, radius: 1.1, angle_deg: 59.500167}
+- {type: straight, length: 1.598004}

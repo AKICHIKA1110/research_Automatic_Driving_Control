@@ -1,0 +1,22 @@
+# L 字コース 5 m × 5 m：内角は右カーブ（半径 0.7〜1.2 m）
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: l_shape
+closed: true
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [0.0, 1.2]
+start_heading_deg: -90.0
+segments:
+- {type: arc, radius: 1.2, angle_deg: 90.0}
+- {type: straight, length: 2.9}
+- {type: arc, radius: 0.9, angle_deg: 90.0}
+- {type: straight, length: 0.9}
+- {type: arc, radius: 0.7, angle_deg: 90.0}
+- {type: straight, length: 1.0}
+- {type: arc, radius: 0.7, angle_deg: -90.0}
+- {type: straight, length: 0.9}
+- {type: arc, radius: 0.9, angle_deg: 90.0}
+- {type: straight, length: 0.5}
+- {type: arc, radius: 1.2, angle_deg: 90.0}
+- {type: straight, length: 2.6}

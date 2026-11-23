@@ -1,0 +1,10 @@
+data/
+results/
+runs/
+*.pt
+*.onnx
+__pycache__/
+*.pyc
+build/
+install/
+log/

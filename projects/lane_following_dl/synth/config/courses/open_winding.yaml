@@ -1,0 +1,27 @@
+# ワインディング道路（約 19 m）：半径 0.6〜2.5 m の左右カーブをクロソイドでつなぐ
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: open_winding
+closed: false
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [0.0, 0.0]
+start_heading_deg: 0.0
+segments:
+- {type: straight, length: 1.5}
+- {type: clothoid, length: 0.5, k0: 0.0, k1: 0.4}
+- {type: arc, radius: 2.5, angle_deg: 40}
+- {type: clothoid, length: 1.0, k0: 0.4, k1: -1.0}
+- {type: arc, radius: 1.0, angle_deg: -70}
+- {type: clothoid, length: 0.6, k0: -1.0, k1: 0.0}
+- {type: straight, length: 1.2}
+- {type: clothoid, length: 0.5, k0: 0.0, k1: 1.6666666666666667}
+- {type: arc, radius: 0.6, angle_deg: 80}
+- {type: clothoid, length: 0.8, k0: 1.6666666666666667, k1: -0.6666666666666666}
+- {type: arc, radius: 1.5, angle_deg: -90}
+- {type: clothoid, length: 0.5, k0: -0.6666666666666666, k1: 0.0}
+- {type: straight, length: 1.0}
+- {type: clothoid, length: 0.6, k0: 0.0, k1: -1.25}
+- {type: arc, radius: 0.8, angle_deg: -60}
+- {type: clothoid, length: 0.6, k0: -1.25, k1: 0.0}
+- {type: straight, length: 2.5}

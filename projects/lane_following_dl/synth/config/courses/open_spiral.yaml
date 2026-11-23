@@ -1,0 +1,14 @@
+# スパイラル（約 8 m）：曲率 0 → 1/0.6 → 0 をゆっくり変化（連続した κ の値を網羅）
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: open_spiral
+closed: false
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [0.0, 0.0]
+start_heading_deg: 0.0
+segments:
+- {type: straight, length: 1.5}
+- {type: clothoid, length: 1.8, k0: 0.0, k1: 1.6666666666666667}
+- {type: clothoid, length: 1.8, k0: 1.6666666666666667, k1: 0.0}
+- {type: straight, length: 2.5}

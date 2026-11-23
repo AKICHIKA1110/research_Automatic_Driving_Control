@@ -1,0 +1,31 @@
+# Speed estimation from 10 Hz BEV lane-mask sequences.
+# `synth` is merged over lane-synth's config/default.yaml (projects/lane_following_dl/synth).
+
+synth:
+  track:
+    center_line: dashed          # dashes give the longitudinal motion cue
+    single_lane_prob: 0.2        # 20 % of the courses have solid lines only (speed hard to see on straights)
+    floor_seams_prob: 0.5        # overridden per run below (recorded as `seams`)
+  detection_noise:
+    enable: true                 # line-detection-CNN-like degradation, independent per frame
+  perturb:
+    enable: false
+
+sequence:
+  fps: 10.0                      # sampling frequency of the image sequence [Hz]
+  duration: [12.0, 20.0]         # length of one run [s]
+  speed_max: 1.0                 # A1 [m/s]
+  stop_prob: 0.15                # probability that a new target speed is (almost) zero
+  stop_speed: [0.0, 0.08]
+  hold: [0.8, 3.0]               # a target speed is kept for this long [s]
+  accel_max: [0.3, 1.5]          # per run [m/s^2]
+  offset_sigma: 0.03             # slowly varying lateral offset from the lane center [m] (OU, tau 2 s)
+  heading_sigma_deg: 2.0         # slowly varying heading offset [deg] (OU, tau 1 s)
+  seams_prob: 0.5                # floor-board seams (move with the floor: a motion cue even without dashes)
+  camera_size: null              # [W, H], e.g. [192, 144]: also save the camera-view mask (key `cam`)
+
+dataset:
+  runs: 1200
+  val_frac: 0.15
+  test_frac: 0.15
+  seed: 1

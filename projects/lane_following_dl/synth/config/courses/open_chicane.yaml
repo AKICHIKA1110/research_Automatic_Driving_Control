@@ -1,0 +1,22 @@
+# シケイン（約 12 m）：短い直線をはさんだ左右左の切り返し（半径 0.7 m）
+# scripts/build_courses.py で生成（手で編集する場合はスクリプト側を直す）
+name: open_chicane
+closed: false
+center_line: none
+lane_width: 0.4
+line_width: 0.02
+start_xy: [0.0, 0.0]
+start_heading_deg: 0.0
+segments:
+- {type: straight, length: 2.0}
+- {type: arc, radius: 0.7, angle_deg: 45}
+- {type: straight, length: 0.3}
+- {type: arc, radius: 0.7, angle_deg: -90}
+- {type: straight, length: 0.3}
+- {type: arc, radius: 0.7, angle_deg: 90}
+- {type: straight, length: 0.3}
+- {type: arc, radius: 0.7, angle_deg: -45}
+- {type: straight, length: 1.5}
+- {type: arc, radius: 0.7, angle_deg: -60}
+- {type: arc, radius: 0.7, angle_deg: 60}
+- {type: straight, length: 3.0}
