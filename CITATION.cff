@@ -9,6 +9,7 @@ authors:
     affiliation: "Independent Researcher, Japan"
     email: "cm24017@g.kogakuin.jp"
     # orcid: "https://orcid.org/0000-0000-0000-0000"
+repository-code: "https://github.com/AKICHIKA1110/research_Automatic_Driving_Control"
 license: Apache-2.0
 version: "1.0.0"
 date-released: "2026-11-23"
