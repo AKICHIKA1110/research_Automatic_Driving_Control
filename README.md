@@ -10,7 +10,98 @@
 - **走行速度推定**：10 Hz の白線マスク時系列画像から現在の走行速度を推定し、3D CNN と 2D CNN を比較
 - **ROS 2 パッケージ**：実機の起動・手動操縦・cmd_vel からモータ／ステア指令への変換
 
-説明スライド：[docs/speed_estimation_2d_vs_3d.pdf](docs/speed_estimation_2d_vs_3d.pdf)
+## 研究の概要（説明スライド）
+
+![表紙](docs/slides/slide-01.png)
+
+<table>
+<tr><td width="50%"><a href="docs/slides/slide-05.png"><img src="docs/slides/slide-05.png" alt="本研究の目的"></a><br><sub>本研究の目的</sub></td><td width="50%"><a href="docs/slides/slide-10.png"><img src="docs/slides/slide-10.png" alt="走行したコース"></a><br><sub>走行したコース</sub></td></tr>
+<tr><td width="50%"><a href="docs/slides/slide-14.png"><img src="docs/slides/slide-14.png" alt="入力画像の例"></a><br><sub>入力画像の例</sub></td><td width="50%"><a href="docs/slides/slide-19.png"><img src="docs/slides/slide-19.png" alt="テストデータに対する推定誤差"></a><br><sub>テストデータに対する推定誤差</sub></td></tr>
+<tr><td width="50%"><a href="docs/slides/slide-23.png"><img src="docs/slides/slide-23.png" alt="鳥瞰変換の前と後の推定誤差"></a><br><sub>鳥瞰変換の前と後の推定誤差</sub></td><td width="50%"><a href="docs/slides/slide-26.png"><img src="docs/slides/slide-26.png" alt="まとめ"></a><br><sub>まとめ</sub></td></tr>
+</table>
+
+<details>
+<summary>すべてのスライドを見る（19 枚）</summary>
+
+**2. 目次**
+
+![目次](docs/slides/slide-02.png)
+
+**4. 研究背景**
+
+![研究背景](docs/slides/slide-04.png)
+
+**5. 本研究の目的**
+
+![本研究の目的](docs/slides/slide-05.png)
+
+**7. 速度推定の流れ**
+
+![速度推定の流れ](docs/slides/slide-07.png)
+
+**9. 学習データの作成方法**
+
+![学習データの作成方法](docs/slides/slide-09.png)
+
+**10. 走行したコース**
+
+![走行したコース](docs/slides/slide-10.png)
+
+**11. コースの種類と内訳**
+
+![コースの種類と内訳](docs/slides/slide-11.png)
+
+**12. 走行の内容（速度と加減速）**
+
+![走行の内容（速度と加減速）](docs/slides/slide-12.png)
+
+**13. データ量と分割**
+
+![データ量と分割](docs/slides/slide-13.png)
+
+**14. 入力画像の例**
+
+![入力画像の例](docs/slides/slide-14.png)
+
+**16. 比較したNNの構造**
+
+![比較したNNの構造](docs/slides/slide-16.png)
+
+**17. 学習の設定**
+
+![学習の設定](docs/slides/slide-17.png)
+
+**19. テストデータに対する推定誤差**
+
+![テストデータに対する推定誤差](docs/slides/slide-19.png)
+
+**20. 推定値と真の速度の関係**
+
+![推定値と真の速度の関係](docs/slides/slide-20.png)
+
+**21. 走行条件ごとの推定誤差**
+
+![走行条件ごとの推定誤差](docs/slides/slide-21.png)
+
+**22. 入力画像枚数Tと破線の折り返し**
+
+![入力画像枚数Tと破線の折り返し](docs/slides/slide-22.png)
+
+**23. 鳥瞰変換の前と後の推定誤差**
+
+![鳥瞰変換の前と後の推定誤差](docs/slides/slide-23.png)
+
+**25. 考察**
+
+![考察](docs/slides/slide-25.png)
+
+**26. まとめ**
+
+![まとめ](docs/slides/slide-26.png)
+
+</details>
+
+PDF：[docs/research_v1.0.0.pdf](docs/research_v1.0.0.pdf)
 
 ## 構成
 
