@@ -39,7 +39,7 @@
 - 学習：Ubuntu 24.04、Python 3.12、PyTorch 2.x（CUDA）、NVIDIA GPU（RTX 4080 で確認）
 - ロボット：Raspberry Pi 5、Ubuntu 24.04、ROS 2 Jazzy
 
-## 引用
+## 採番
 
 Kurihara, A. (2026). *MentorPi Research: speed estimation from time-series lane-mask images (3D-CNN vs 2D-CNN) and lane-synth* (v1.0.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.24466081
 
