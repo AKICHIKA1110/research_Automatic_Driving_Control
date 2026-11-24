@@ -16,14 +16,14 @@
 
 <table>
 <tr><td width="50%"><a href="docs/slides/slide-05.png"><img src="docs/slides/slide-05.png" alt="本研究の目的"></a><br><sub>本研究の目的</sub></td><td width="50%"><a href="docs/slides/slide-10.png"><img src="docs/slides/slide-10.png" alt="走行したコース"></a><br><sub>走行したコース</sub></td></tr>
-<tr><td width="50%"><a href="docs/slides/slide-14.png"><img src="docs/slides/slide-14.png" alt="入力画像の例"></a><br><sub>入力画像の例</sub></td><td width="50%"><a href="docs/slides/slide-19.png"><img src="docs/slides/slide-19.png" alt="テストデータに対する推定誤差"></a><br><sub>テストデータに対する推定誤差</sub></td></tr>
-<tr><td width="50%"><a href="docs/slides/slide-23.png"><img src="docs/slides/slide-23.png" alt="鳥瞰変換の前と後の推定誤差"></a><br><sub>鳥瞰変換の前と後の推定誤差</sub></td><td width="50%"><a href="docs/slides/slide-26.png"><img src="docs/slides/slide-26.png" alt="時系列モデルのテスト誤差"></a><br><sub>時系列モデルのテスト誤差</sub></td></tr>
-<tr><td width="50%"><a href="docs/slides/slide-28.png"><img src="docs/slides/slide-28.png" alt="逐次推論の計算量"></a><br><sub>逐次推論の計算量</sub></td><td width="50%"><a href="docs/slides/slide-31.png"><img src="docs/slides/slide-31.png" alt="計算コストと誤差の関係"></a><br><sub>計算コストと誤差の関係</sub></td></tr>
-<tr><td width="50%"><a href="docs/slides/slide-34.png"><img src="docs/slides/slide-34.png" alt="考察：時系列モデルの比較"></a><br><sub>考察：時系列モデルの比較</sub></td><td width="50%"><a href="docs/slides/slide-35.png"><img src="docs/slides/slide-35.png" alt="まとめ"></a><br><sub>まとめ</sub></td></tr>
+<tr><td width="50%"><a href="docs/slides/slide-14.png"><img src="docs/slides/slide-14.png" alt="入力画像の例"></a><br><sub>入力画像の例</sub></td><td width="50%"><a href="docs/slides/slide-19.png"><img src="docs/slides/slide-19.png" alt="3D CNNの構造"></a><br><sub>3D CNNの構造</sub></td></tr>
+<tr><td width="50%"><a href="docs/slides/slide-22.png"><img src="docs/slides/slide-22.png" alt="テストデータに対する推定誤差"></a><br><sub>テストデータに対する推定誤差</sub></td><td width="50%"><a href="docs/slides/slide-26.png"><img src="docs/slides/slide-26.png" alt="鳥瞰変換の前と後の推定誤差"></a><br><sub>鳥瞰変換の前と後の推定誤差</sub></td></tr>
+<tr><td width="50%"><a href="docs/slides/slide-32.png"><img src="docs/slides/slide-32.png" alt="ConvLSTMの構造"></a><br><sub>ConvLSTMの構造</sub></td><td width="50%"><a href="docs/slides/slide-36.png"><img src="docs/slides/slide-36.png" alt="逐次推論の計算量"></a><br><sub>逐次推論の計算量</sub></td></tr>
+<tr><td width="50%"><a href="docs/slides/slide-39.png"><img src="docs/slides/slide-39.png" alt="計算コストと誤差の関係"></a><br><sub>計算コストと誤差の関係</sub></td><td width="50%"><a href="docs/slides/slide-43.png"><img src="docs/slides/slide-43.png" alt="まとめ"></a><br><sub>まとめ</sub></td></tr>
 </table>
 
 <details>
-<summary>すべてのスライドを見る（27 枚）</summary>
+<summary>すべてのスライドを見る（35 枚）</summary>
 
 **2. 目次**
 
@@ -69,72 +69,103 @@
 
 ![比較したNNの構造](docs/slides/slide-16.png)
 
-**17. 学習の設定**
+**17. CNNに共通の構造**
 
-![学習の設定](docs/slides/slide-17.png)
+![CNNに共通の構造](docs/slides/slide-17.png)
 
-**19. テストデータに対する推定誤差**
+**18. 2D CNNの構造**
 
-![テストデータに対する推定誤差](docs/slides/slide-19.png)
+![2D CNNの構造](docs/slides/slide-18.png)
 
-**20. 推定値と真の速度の関係**
+**19. 3D CNNの構造**
 
-![推定値と真の速度の関係](docs/slides/slide-20.png)
+![3D CNNの構造](docs/slides/slide-19.png)
 
-**21. 走行条件ごとの推定誤差**
+**20. 学習の設定**
 
-![走行条件ごとの推定誤差](docs/slides/slide-21.png)
+![学習の設定](docs/slides/slide-20.png)
 
-**22. 入力画像枚数Tと破線の折り返し**
+**22. テストデータに対する推定誤差**
 
-![入力画像枚数Tと破線の折り返し](docs/slides/slide-22.png)
+![テストデータに対する推定誤差](docs/slides/slide-22.png)
 
-**23. 鳥瞰変換の前と後の推定誤差**
+**23. 推定値と真の速度の関係**
 
-![鳥瞰変換の前と後の推定誤差](docs/slides/slide-23.png)
+![推定値と真の速度の関係](docs/slides/slide-23.png)
 
-**25. 比較した時系列モデル**
+**24. 走行条件ごとの推定誤差**
 
-![比較した時系列モデル](docs/slides/slide-25.png)
+![走行条件ごとの推定誤差](docs/slides/slide-24.png)
 
-**26. 時系列モデルのテスト誤差**
+**25. 入力画像枚数Tと破線の折り返し**
 
-![時系列モデルのテスト誤差](docs/slides/slide-26.png)
+![入力画像枚数Tと破線の折り返し](docs/slides/slide-25.png)
 
-**27. 時系列モデルの走行条件ごとの誤差**
+**26. 鳥瞰変換の前と後の推定誤差**
 
-![時系列モデルの走行条件ごとの誤差](docs/slides/slide-27.png)
+![鳥瞰変換の前と後の推定誤差](docs/slides/slide-26.png)
 
-**28. 逐次推論の計算量**
+**28. 比較した時系列モデル**
 
-![逐次推論の計算量](docs/slides/slide-28.png)
+![比較した時系列モデル](docs/slides/slide-28.png)
 
-**29. 学習の計算量**
+**29. R(2+1)Dの構造**
 
-![学習の計算量](docs/slides/slide-29.png)
+![R(2+1)Dの構造](docs/slides/slide-29.png)
 
-**30. 学習過程**
+**30. TSMの構造**
 
-![学習過程](docs/slides/slide-30.png)
+![TSMの構造](docs/slides/slide-30.png)
 
-**31. 計算コストと誤差の関係**
+**31. CNN-LSTMの構造**
 
-![計算コストと誤差の関係](docs/slides/slide-31.png)
+![CNN-LSTMの構造](docs/slides/slide-31.png)
 
-**33. 考察：3D CNNと鳥瞰変換**
+**32. ConvLSTMの構造**
 
-![考察：3D CNNと鳥瞰変換](docs/slides/slide-33.png)
+![ConvLSTMの構造](docs/slides/slide-32.png)
 
-**34. 考察：時系列モデルの比較**
+**33. ViViTの構造**
 
-![考察：時系列モデルの比較](docs/slides/slide-34.png)
+![ViViTの構造](docs/slides/slide-33.png)
 
-**35. まとめ**
+**34. 時系列モデルのテスト誤差**
 
-![まとめ](docs/slides/slide-35.png)
+![時系列モデルのテスト誤差](docs/slides/slide-34.png)
+
+**35. 時系列モデルの条件ごとの誤差**
+
+![時系列モデルの条件ごとの誤差](docs/slides/slide-35.png)
+
+**36. 逐次推論の計算量**
+
+![逐次推論の計算量](docs/slides/slide-36.png)
+
+**37. 学習の計算量**
+
+![学習の計算量](docs/slides/slide-37.png)
+
+**38. 学習過程**
+
+![学習過程](docs/slides/slide-38.png)
+
+**39. 計算コストと誤差の関係**
+
+![計算コストと誤差の関係](docs/slides/slide-39.png)
+
+**41. 考察：3D CNNと鳥瞰変換**
+
+![考察：3D CNNと鳥瞰変換](docs/slides/slide-41.png)
+
+**42. 考察：時系列モデルの比較**
+
+![考察：時系列モデルの比較](docs/slides/slide-42.png)
+
+**43. まとめ**
+
+![まとめ](docs/slides/slide-43.png)
 
 </details>
-
 PDF：[docs/research_v1.1.0.pdf](docs/research_v1.1.0.pdf)（v1.0.0 版：[docs/research_v1.0.0.pdf](docs/research_v1.0.0.pdf)）
 
 ## 構成
