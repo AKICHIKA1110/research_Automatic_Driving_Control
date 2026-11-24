@@ -166,7 +166,7 @@
 ![まとめ](docs/slides/slide-43.png)
 
 </details>
-PDF：[docs/research_v1.1.0.pdf](docs/research_v1.1.0.pdf)（v1.0.0 版：[docs/research_v1.0.0.pdf](docs/research_v1.0.0.pdf)）
+PDF：[docs/research_v1.2.0.pdf](docs/research_v1.2.0.pdf)（v1.0.0 版：[docs/research_v1.0.0.pdf](docs/research_v1.0.0.pdf)）
 
 ## 構成
 
@@ -215,7 +215,7 @@ CPU は Core i5-13600KF 4 スレッド（Raspberry Pi 5 を想定した参考値
 
 ## 採番
 
-Kurihara, A. (2026). *MentorPi Research: speed estimation from time-series lane-mask images (3D-CNN, 2D-CNN and sequence models) and lane-synth* (v1.1.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.24466081
+Kurihara, A. (2026). *MentorPi Research: speed estimation from time-series lane-mask images (3D-CNN, 2D-CNN and sequence models) and lane-synth* (v1.2.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.24466081
 
 [CITATION.cff](CITATION.cff) も参照してください（GitHub の「Cite this repository」から BibTeX を取得できます）。
 
