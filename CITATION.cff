@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: "MentorPi Research: speed estimation from time-series lane-mask images (3D-CNN vs 2D-CNN) and lane-synth"
+title: "MentorPi Research: speed estimation from time-series lane-mask images (3D-CNN, 2D-CNN and sequence models) and lane-synth"
 type: software
 authors:
   - family-names: "Kurihara"
@@ -12,10 +12,11 @@ authors:
 repository-code: "https://github.com/AKICHIKA1110/research_Automatic_Driving_Control"
 doi: "10.5281/zenodo.24466081"
 license: Apache-2.0
-version: "1.0.0"
-date-released: "2026-11-23"
+version: "1.1.0"
+date-released: "2026-11-24"
 keywords:
   - 3D-CNN
+  - ConvLSTM
   - speed estimation
   - lane detection
   - synthetic data

@@ -62,7 +62,8 @@ def main():
 
     model = build(a.model, a.T)
     n_params, macs = count_params(model), count_macs(model, a.T, *tr.frames.shape[1:])
-    model = model.cuda().to(memory_format=torch.channels_last) if a.model != "c3d" else model.cuda()
+    cl = getattr(model, "channels_last_ok", a.model != "c3d")   # only for models without 5-D (3D conv) weights
+    model = model.cuda().to(memory_format=torch.channels_last) if cl else model.cuda()
     opt = torch.optim.AdamW(model.parameters(), lr=a.lr, weight_decay=1e-4)
     steps = a.epochs * math.ceil(len(tr) / a.bs)
     sched = torch.optim.lr_scheduler.OneCycleLR(opt, max_lr=a.lr, total_steps=steps, pct_start=0.1)
@@ -100,7 +101,7 @@ def main():
     info["pred"] = pt
     info["err"] = info.pred - info.v
     info.to_csv(out / "test_pred.csv", index=False)
-    summ = dict(model=a.model, T=a.T, input=a.input, seed=a.seed, epochs=a.epochs, params=n_params, macs=macs, best_val_mae=best,
+    summ = dict(model=a.model, T=a.T, input=a.input, seed=a.seed, epochs=a.epochs, lr=a.lr, params=n_params, macs=macs, best_val_mae=best,
                 test_mae=float(info.err.abs().mean()), test_rmse=float(np.sqrt((info.err ** 2).mean())),
                 train_windows=len(tr), test_windows=len(te), minutes=(time.time() - t0) / 60)
     json.dump(summ, open(out / "summary.json", "w"), indent=1)

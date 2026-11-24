@@ -7,7 +7,7 @@
 著者：栗原 旺愛（Akichika Kurihara, Independent Researcher）
 
 - **白線画像生成ソフト（lane-synth）**：コースを走ったときの車載カメラの白線マスク画像と鳥瞰画像を合成
-- **走行速度推定**：10 Hz の白線マスク時系列画像から現在の走行速度を推定し、3D CNN と 2D CNN を比較
+- **走行速度推定**：10 Hz の白線マスク時系列画像から現在の走行速度を推定し、3D CNN・2D CNN と時系列モデル（CNN-LSTM、ConvLSTM、R(2+1)D、TSM、ViViT）を比較
 - **ROS 2 パッケージ**：実機の起動・手動操縦・cmd_vel からモータ／ステア指令への変換
 
 ## 研究の概要（説明スライド）
@@ -17,11 +17,13 @@
 <table>
 <tr><td width="50%"><a href="docs/slides/slide-05.png"><img src="docs/slides/slide-05.png" alt="本研究の目的"></a><br><sub>本研究の目的</sub></td><td width="50%"><a href="docs/slides/slide-10.png"><img src="docs/slides/slide-10.png" alt="走行したコース"></a><br><sub>走行したコース</sub></td></tr>
 <tr><td width="50%"><a href="docs/slides/slide-14.png"><img src="docs/slides/slide-14.png" alt="入力画像の例"></a><br><sub>入力画像の例</sub></td><td width="50%"><a href="docs/slides/slide-19.png"><img src="docs/slides/slide-19.png" alt="テストデータに対する推定誤差"></a><br><sub>テストデータに対する推定誤差</sub></td></tr>
-<tr><td width="50%"><a href="docs/slides/slide-23.png"><img src="docs/slides/slide-23.png" alt="鳥瞰変換の前と後の推定誤差"></a><br><sub>鳥瞰変換の前と後の推定誤差</sub></td><td width="50%"><a href="docs/slides/slide-26.png"><img src="docs/slides/slide-26.png" alt="まとめ"></a><br><sub>まとめ</sub></td></tr>
+<tr><td width="50%"><a href="docs/slides/slide-23.png"><img src="docs/slides/slide-23.png" alt="鳥瞰変換の前と後の推定誤差"></a><br><sub>鳥瞰変換の前と後の推定誤差</sub></td><td width="50%"><a href="docs/slides/slide-26.png"><img src="docs/slides/slide-26.png" alt="時系列モデルのテスト誤差"></a><br><sub>時系列モデルのテスト誤差</sub></td></tr>
+<tr><td width="50%"><a href="docs/slides/slide-28.png"><img src="docs/slides/slide-28.png" alt="逐次推論の計算量"></a><br><sub>逐次推論の計算量</sub></td><td width="50%"><a href="docs/slides/slide-31.png"><img src="docs/slides/slide-31.png" alt="計算コストと誤差の関係"></a><br><sub>計算コストと誤差の関係</sub></td></tr>
+<tr><td width="50%"><a href="docs/slides/slide-34.png"><img src="docs/slides/slide-34.png" alt="考察：時系列モデルの比較"></a><br><sub>考察：時系列モデルの比較</sub></td><td width="50%"><a href="docs/slides/slide-35.png"><img src="docs/slides/slide-35.png" alt="まとめ"></a><br><sub>まとめ</sub></td></tr>
 </table>
 
 <details>
-<summary>すべてのスライドを見る（19 枚）</summary>
+<summary>すべてのスライドを見る（27 枚）</summary>
 
 **2. 目次**
 
@@ -91,17 +93,49 @@
 
 ![鳥瞰変換の前と後の推定誤差](docs/slides/slide-23.png)
 
-**25. 考察**
+**25. 比較した時系列モデル**
 
-![考察](docs/slides/slide-25.png)
+![比較した時系列モデル](docs/slides/slide-25.png)
 
-**26. まとめ**
+**26. 時系列モデルのテスト誤差**
 
-![まとめ](docs/slides/slide-26.png)
+![時系列モデルのテスト誤差](docs/slides/slide-26.png)
+
+**27. 時系列モデルの走行条件ごとの誤差**
+
+![時系列モデルの走行条件ごとの誤差](docs/slides/slide-27.png)
+
+**28. 逐次推論の計算量**
+
+![逐次推論の計算量](docs/slides/slide-28.png)
+
+**29. 学習の計算量**
+
+![学習の計算量](docs/slides/slide-29.png)
+
+**30. 学習過程**
+
+![学習過程](docs/slides/slide-30.png)
+
+**31. 計算コストと誤差の関係**
+
+![計算コストと誤差の関係](docs/slides/slide-31.png)
+
+**33. 考察：3D CNNと鳥瞰変換**
+
+![考察：3D CNNと鳥瞰変換](docs/slides/slide-33.png)
+
+**34. 考察：時系列モデルの比較**
+
+![考察：時系列モデルの比較](docs/slides/slide-34.png)
+
+**35. まとめ**
+
+![まとめ](docs/slides/slide-35.png)
 
 </details>
 
-PDF：[docs/research_v1.0.0.pdf](docs/research_v1.0.0.pdf)
+PDF：[docs/research_v1.1.0.pdf](docs/research_v1.1.0.pdf)（v1.0.0 版：[docs/research_v1.0.0.pdf](docs/research_v1.0.0.pdf)）
 
 ## 構成
 
@@ -113,13 +147,31 @@ PDF：[docs/research_v1.0.0.pdf](docs/research_v1.0.0.pdf)
 
 ## 主な結果（シミュレーション、T = 8 フレーム、テスト MAE）
 
+### 3D CNN と 2D CNN（鳥瞰変換の前と後）
+
 | モデル | 鳥瞰画像入力 | カメラ視点入力 |
 |---|---|---|
 | 2D CNN（1枚入力） | 0.237 m/s | — |
 | 2D CNN（時間をチャンネル方向として扱う） | 0.100 m/s | 0.084 m/s |
 | 3D CNN | **0.088 m/s** | **0.079 m/s** |
 
-1 枚の画像からは速度を推定できず、時系列画像が必要です。パラメータ数・計算量をそろえても、時間方向にも畳み込む 3D CNN の誤差が最も小さくなりました。詳細はスライドを参照してください。
+1 枚の画像からは速度を推定できず、時系列画像が必要です。パラメータ数・計算量をそろえても、時間方向にも畳み込む 3D CNN の誤差が 2D CNN より小さくなりました。
+
+### 時系列モデルの比較（v1.1.0 で追加、鳥瞰画像入力）
+
+パラメータ数は約 87〜90 万にそろえています。逐次推論は、10 Hz で新しい画像が来るたびに最新 8 枚から推定する場合の 1 枚あたりのコストです（過去フレームの特徴を再利用できるモデルは再利用）。
+
+| モデル | テスト MAE [m/s] | 計算量（8 枚の窓）[MMAC] | 逐次推論 [MMAC/枚] | 逐次推論 CPU [ms] | 学習時間 [分] |
+|---|---|---|---|---|---|
+| 2D CNN（時間→チャンネル） | 0.100 | 257 | 257 | 1.5 | 2 |
+| 3D CNN | 0.088 | 1,193 | 1,193 | 24.9 | 18 |
+| R(2+1)D | 0.084 | 1,262 | 1,262 | 11.6 | 42 |
+| TSM | 0.087 | 1,956 | 1,956 | 8.4 | 27 |
+| CNN-LSTM | 0.084 | 1,225 | **154** | **1.5** | 16 |
+| ConvLSTM | **0.075** | 2,279 | 950 | 4.9 | 19 |
+| ViViT（学習率 0.0003） | 0.176 | 1,600 | 202 | 1.8 | 29 |
+
+CPU は Core i5-13600KF 4 スレッド（Raspberry Pi 5 を想定した参考値）、学習は RTX 4080 で 20 エポック（3 シードの平均）。ConvLSTM の誤差が最も小さく、CNN-LSTM は逐次推論の計算量が 3D CNN の約 1/8 で誤差も小さくなりました。詳細はスライドを参照してください。
 
 ## ROS 2 パッケージについて
 
@@ -132,7 +184,7 @@ PDF：[docs/research_v1.0.0.pdf](docs/research_v1.0.0.pdf)
 
 ## 採番
 
-Kurihara, A. (2026). *MentorPi Research: speed estimation from time-series lane-mask images (3D-CNN vs 2D-CNN) and lane-synth* (v1.0.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.24466081
+Kurihara, A. (2026). *MentorPi Research: speed estimation from time-series lane-mask images (3D-CNN, 2D-CNN and sequence models) and lane-synth* (v1.1.0) [Software]. Zenodo. https://doi.org/10.5281/zenodo.24466081
 
 [CITATION.cff](CITATION.cff) も参照してください（GitHub の「Cite this repository」から BibTeX を取得できます）。
 
@@ -150,6 +202,8 @@ Code of a personal research project on a small Ackermann-steering mobile robot (
 - **Speed estimation**: estimates the current speed from 10 Hz lane-mask sequences and compares a 3D-CNN with 2D-CNNs
   (single frame / frames stacked as channels). With matched parameters and compute, the 3D-CNN gives the lowest error
   (test MAE 0.088 m/s on BEV input, 0.079 m/s on camera-view input); a single frame cannot tell the speed (0.237 m/s).
+  v1.1.0 adds other sequence models with the same parameter budget: ConvLSTM gives the lowest error (0.075 m/s), and
+  CNN-LSTM matches R(2+1)D (0.084 m/s) at 1/8 of the 3D-CNN compute per new frame in sequential inference.
 - **ROS 2 packages** for bring-up, teleoperation and cmd_vel → motor/steering conversion. They depend on the vendor
   drivers `ros_robot_controller` and `ascamera`, which are not included.
 

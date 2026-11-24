@@ -1,4 +1,4 @@
-# 走行速度推定：3D CNN と 2D CNN の比較
+# 走行速度推定：3D CNN・2D CNN と時系列モデルの比較
 
 [← README に戻る](../../README.md)
 
@@ -20,6 +20,13 @@
 | `early2d` | T 枚を入力チャンネルとして重ねる（2D CNN） |
 | `early2d_wide` | early2d の幅を広げ、計算量を c3d にそろえたもの |
 | `c3d` | 3×3×3 カーネルで時間方向にも畳み込む（3D CNN） |
+| `r2p1d` | 3D 畳み込みを空間 1×3×3 と時間 3×1×1 に分解（R(2+1)D） |
+| `tsm` | 2D CNN の各層でチャンネルの 1/8 ずつを前後のフレームへずらす（Temporal Shift Module） |
+| `cnn_lstm` | フレームごとの 2D CNN の特徴ベクトルを LSTM でつなぐ |
+| `convlstm` | 1/8 解像度の特徴マップを位置を保ったまま ConvLSTM でつなぐ |
+| `vivit` | フレームごとの空間 Transformer → 時間 Transformer（ViViT，factorized encoder） |
+
+`early2d_wide` 以外はパラメータ数を約 87〜90 万にそろえています。
 
 ## 使い方
 
@@ -38,7 +45,10 @@ python scripts/train.py data/v1cam --model c3d --T 8 --input cam --out results/c
 bash scripts/run_all.sh data/v1 results          # 2D vs 3D（T=8、3 シード）と T=4/16
 bash scripts/run_cam.sh data/v1cam results       # 鳥瞰変換前の入力
 bash scripts/run_tsweep.sh data/v1 results       # T = 2〜24
+bash scripts/run_others.sh data/v1 results       # 時系列モデル（CNN-LSTM, ConvLSTM, R(2+1)D, TSM, ViViT）
+bash scripts/run_vivit_lr.sh data/v1 results 3e-4   # ViViT を学習率 0.0003 で
 python scripts/evaluate.py results/*_T8_s*/ --out results/report_T8
+python scripts/bench_cost.py --out results/report_cost   # 逐次推論・学習の計算量と時間
 python scripts/analyze_tsweep.py results --out results/report_tsweep_speed
 ```
 

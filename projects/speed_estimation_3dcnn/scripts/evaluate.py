@@ -58,7 +58,7 @@ def main():
     groups: dict[str, list] = {}
     for r in a.runs:
         s = json.load(open(Path(r) / "summary.json"))
-        name = f"{s['model']} T{s['T']}" + (" cam" if s.get("input") == "cam" else "")
+        name = f"{s['model']} T{s['T']}" + (" cam" if s.get("input") == "cam" else "") + (f" lr{s['lr']:g}" if s.get("lr", 2e-3) != 2e-3 else "")
         groups.setdefault(name, []).append((s, pd.read_csv(Path(r) / "test_pred.csv")))
     base = next(iter(groups.values()))[0][1]
     const = base.v.mean()   # reference: always answer the mean speed of the test set
